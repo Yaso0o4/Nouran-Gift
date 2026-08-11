@@ -4,18 +4,16 @@
 
 <head>
 
-```
 <meta charset="UTF-8">
 
 <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover" 
 >
 
-<title>لحظة الحقيقة 🎓❤️</title>
+<title>نتيجة ناني 🎓❤️</title>
 
 <link rel="icon" href="images/cap.png">
-
 
 <style>
 
@@ -29,11 +27,9 @@
         box-sizing: border-box;
     }
 
-
     html {
         scroll-behavior: smooth;
     }
-
 
     body {
 
@@ -64,7 +60,6 @@
 
         overflow-x: hidden;
     }
-
 
     /* =========================
        بوابة الصوت
@@ -107,7 +102,6 @@
             visibility 0.8s ease;
     }
 
-
     .voice-screen.hide {
 
         opacity: 0;
@@ -116,7 +110,6 @@
 
         pointer-events: none;
     }
-
 
     .voice-box {
 
@@ -144,7 +137,6 @@
             appear 1s ease;
     }
 
-
     .voice-icon {
 
         font-size:
@@ -157,7 +149,6 @@
             ease-in-out infinite;
     }
 
-
     .voice-box h1 {
 
         font-size:
@@ -168,14 +159,12 @@
         line-height: 1.5;
     }
 
-
     .voice-name {
 
         color: #c45aa0;
 
         font-weight: bold;
     }
-
 
     .voice-text {
 
@@ -190,14 +179,12 @@
         color: #60485a;
     }
 
-
     .voice-highlight {
 
         color: #b54d91;
 
         font-weight: bold;
     }
-
 
     /* زر بدء التسجيل */
 
@@ -243,7 +230,6 @@
             box-shadow 0.25s ease;
     }
 
-
     .start-voice-btn:hover {
 
         transform:
@@ -255,12 +241,10 @@
             rgba(169, 81, 164, 0.35);
     }
 
-
     .start-voice-btn:active {
 
         transform: scale(0.96);
     }
-
 
     /* =========================
        الصفحة الأساسية
@@ -289,7 +273,6 @@
         pointer-events: none;
     }
 
-
     .main-page.show {
 
         opacity: 1;
@@ -299,7 +282,6 @@
 
         pointer-events: auto;
     }
-
 
     /* =========================
        مؤشر الصوت
@@ -341,12 +323,10 @@
         justify-content: center;
     }
 
-
     .audio-control.show {
 
         display: flex;
     }
-
 
     /* =========================
        الصورة الشخصية
@@ -378,7 +358,6 @@
             photoAppear 1.2s ease;
     }
 
-
     .photo-container img {
 
         width: 100%;
@@ -389,7 +368,6 @@
 
         display: block;
     }
-
 
     /* =========================
        العناوين
@@ -405,7 +383,6 @@
         margin-bottom: 15px;
     }
 
-
     .subtitle {
 
         font-size:
@@ -416,14 +393,12 @@
         margin-bottom: 20px;
     }
 
-
     .highlight {
 
         color: #b54d91;
 
         font-weight: bold;
     }
-
 
     /* =========================
        العد التنازلي
@@ -1009,50 +984,43 @@
     }
 
 </style>
-```
 
 </head>
-
 <body>
 
-```
 <!-- =================================================
      بوابة الصوت
 ================================================== -->
 
 <section
     class="voice-screen"
-    id="voiceScreen"
->
+    id="voiceScreen">
 
     <div class="voice-box">
 
 
         <div class="voice-icon">
-            🎙️
+            🎓
         </div>
 
 
         <h1>
 
-            نوران... قبل ما نبدأ ❤️
+            نوران... قبل ما تشوفي النتيجة🌸
 
         </h1>
 
 
         <p class="voice-text">
 
-            عندي كلمة خاصة نبيك تسمعيها
-            <br>
-
-            قبل ما تشوفي النتيجة...
-
+           قولي بسم الله بإذن الله ناجحه 
+        
             <br><br>
 
-            خذي لحظتك...
+            خذي نفسك ...
 
             <span class="voice-highlight">
-                واضغطي لما تكوني جاهزة 🎓
+                واضغطي لما تكوني جاهزة 🔥
             </span>
 
         </p>
@@ -1064,7 +1032,7 @@
             onclick="startExperience()"
         >
 
-            🎙️ أنا جاهزة ❤️
+             أنا جاهزة ❤️
 
         </button>
 
@@ -1083,8 +1051,7 @@
     class="audio-control"
     id="audioControl"
     onclick="toggleAudio()"
-    aria-label="التحكم بالصوت"
->
+    aria-label="التحكم بالصوت">
 
     🔊
 
@@ -1098,8 +1065,7 @@
 
 <main
     class="main-page"
-    id="mainPage"
->
+    id="mainPage">
 
 
     <!-- صورة نوران -->
@@ -1118,49 +1084,9 @@
     <!-- العنوان -->
 
     <h1>
-
-        لحظة الحقيقة
+        لحضة النتيجة
         🎓❤️
-
     </h1>
-
-
-    <p class="subtitle">
-
-        <span class="highlight">
-            12 سنة
-        </span>
-
-        من التعب...
-
-        <br>
-
-        <span class="highlight">
-            12 سنة
-        </span>
-
-        من الأحلام...
-
-        <br>
-
-        واليوم حان وقت معرفة النتيجة ✨
-
-    </p>
-
-
-
-    <!-- العد التنازلي -->
-
-    <div
-        class="countdown"
-        id="countdown"
-    >
-
-        3
-
-    </div>
-
-
 
     <!-- رسالة الاستعداد -->
 
@@ -1175,6 +1101,13 @@
     </div>
 
 
+    <!-- العد التنازلي -->
+
+    <div
+        class="countdown"
+        id="countdown">
+        3
+    </div>
 
     <!-- زر إظهار النتيجة -->
 
@@ -1199,34 +1132,30 @@
         id="resultSection"
     >
 
-
         <div class="result-title">
-
-            نوران... نتيجتك هي 🎓
+🌸🌸🌸🌸
 
         </div>
 
 
         <div
             class="percentage"
-            id="percentage"
-        >
+            id="percentage">
 
             0%
-
         </div>
 
 
         <div class="congratulations">
 
-            🎉 مبرووووك النجاح 🎉
+            🎉 مبرووووك النجاح بتقدير امتياز 🎓🎉
 
         </div>
 
 
         <p class="result-caption">
 
-            وهذه ثمرة تعبك
+            هذه ثمرة تعبكو سهرك
             ❤️
 
         </p>
@@ -1248,15 +1177,8 @@
             >
 
         </div>
-
-
-        <p class="zoom-hint">
-
-            🔍 اضغطي على الصورة لتكبيرها
-
-        </p>
-
-
+<br><br><br>
+<br><br><br>
 
         <!-- زر الرسالة -->
 
@@ -1265,7 +1187,7 @@
             onclick="goToMessage()"
         >
 
-            💌 رسالة من أختك
+            💌 رسالة مباركةالنجاح
 
         </button>
 
@@ -1277,37 +1199,8 @@
 
 
 
-<!-- =================================================
-     نافذة تكبير الصورة
-================================================== -->
-
-<div
-    class="image-modal"
-    id="imageModal"
-    onclick="closeImage()"
->
-
-    <button
-        class="close-modal"
-        onclick="closeImage()"
-    >
-
-        ✕
-
-    </button>
-
-
-    <img
-        src="images/result.jpg"
-        alt="النتيجة الرسمية مكبرة"
-    >
-
-</div>
-
-
-
-<!-- =================================================
-     التسجيل الصوتي
+<!-- =============================================== 
+  التسجيل الصوتي
 ================================================== -->
 
 <audio
@@ -1524,10 +1417,15 @@
 
         /*
          تحريك النسبة
+         
+         \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+         \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+         \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+         \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
         */
 
         animatePercentage(
-            92.35,
+            86.75,
             1800
         );
 
@@ -1630,8 +1528,12 @@
 
 
         const symbols = [
+            "🎓",
             "🎉",
+            "🌸",
             "✨",
+            "🎓",
+            "❤️",
             "💕",
             "🌸",
             "🎓",
@@ -1737,27 +1639,7 @@
     }
 
 
-    /* =================================================
-       إغلاق الصورة بزر Escape
-    ================================================== */
-
-    document.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                event.key === "Escape"
-            ) {
-
-                closeImage();
-
-            }
-
-        }
-    );
-
 </script>
-```
 
 </body>
 
