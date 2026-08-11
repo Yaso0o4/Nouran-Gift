@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<title>هدية خاصة لنوران 🎓❤️</title>
+
+<!-- أيقونة الموقع -->
+<link rel="icon" href="images/cap.png">
+
+<style>
+
+    /* =========================
+       الإعدادات الأساسية
+    ========================== */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+
+        min-height: 100vh;
+        min-height: 100dvh;
+
+        font-family:
+            Tahoma,
+            "Arial",
+            sans-serif;
+
+        background:
+            radial-gradient(
+                circle at 20% 10%,
+                rgba(255, 255, 255, 0.95),
+                transparent 35%
+            ),
+
+            radial-gradient(
+                circle at 90% 90%,
+                rgba(239, 213, 255, 0.6),
+                transparent 40%
+            ),
+
+            linear-gradient(
+                135deg,
+                #fff0f6,
+                #f3e7ff
+            );
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        text-align: center;
+
+        color: #4a3045;
+
+        overflow: hidden;
+
+        padding:
+            max(20px, env(safe-area-inset-top))
+            15px
+            max(20px, env(safe-area-inset-bottom));
+    }
+
+
+    /* =========================
+       الحاوية الرئيسية
+    ========================== */
+
+    .container {
+
+        width: 100%;
+
+        max-width: 620px;
+
+        padding: 30px 20px;
+
+        position: relative;
+
+        z-index: 2;
+
+        animation:
+            pageAppear 1.2s ease both;
+    }
+
+
+    /* =========================
+       قبعة التخرج
+    ========================== */
+
+    .cap {
+
+        font-size: clamp(55px, 15vw, 78px);
+
+        line-height: 1;
+
+        margin-bottom: 22px;
+
+        animation:
+            float 2.5s ease-in-out infinite;
+
+        filter:
+            drop-shadow(
+                0 8px 8px
+                rgba(0, 0, 0, 0.08)
+            );
+    }
+
+
+    /* =========================
+       العنوان
+    ========================== */
+
+    h1 {
+
+        font-size:
+            clamp(25px, 7vw, 34px);
+
+        line-height: 1.5;
+
+        font-weight: 700;
+
+        margin-bottom: 15px;
+
+        color: #4a3045;
+    }
+
+
+    .name {
+
+        display: block;
+
+        color: #c45aa0;
+
+        font-size:
+            clamp(31px, 9vw, 40px);
+
+        font-weight: 800;
+
+        margin-top: 4px;
+
+        letter-spacing: 0.5px;
+
+        text-shadow:
+            0 3px 12px
+            rgba(196, 90, 160, 0.12);
+    }
+
+
+    /* =========================
+       الرسالة
+    ========================== */
+
+    .message {
+
+        width: 100%;
+
+        max-width: 540px;
+
+        margin:
+            20px auto 30px;
+
+        font-size:
+            clamp(16px, 4.5vw, 19px);
+
+        line-height: 2;
+
+        color: #5a4255;
+    }
+
+
+    .highlight {
+
+        color: #b54d91;
+
+        font-weight: 700;
+    }
+
+
+    /* =========================
+       زر البداية
+    ========================== */
+
+    .start-btn {
+
+        border: none;
+
+        outline: none;
+
+        background:
+            linear-gradient(
+                135deg,
+                #d96bb1,
+                #a951a4
+            );
+
+        color: white;
+
+        padding:
+            15px 32px;
+
+        min-height: 54px;
+
+        min-width: 210px;
+
+        border-radius: 50px;
+
+        font-size:
+            clamp(16px, 4.5vw, 19px);
+
+        font-family: inherit;
+
+        font-weight: 600;
+
+        cursor: pointer;
+
+        box-shadow:
+            0 10px 25px
+            rgba(169, 81, 164, 0.25);
+
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+
+    .start-btn:hover {
+
+        transform:
+            translateY(-4px)
+            scale(1.02);
+
+        box-shadow:
+            0 15px 30px
+            rgba(169, 81, 164, 0.35);
+    }
+
+
+    .start-btn:active {
+
+        transform: scale(0.96);
+    }
+
+
+    /* =========================
+       العناصر المتحركة
+    ========================== */
+
+    .floating {
+
+        position: fixed;
+
+        top: -50px;
+
+        font-size:
+            clamp(20px, 6vw, 28px);
+
+        opacity: 0.65;
+
+        pointer-events: none;
+
+        z-index: 1;
+
+        animation:
+            fall linear infinite;
+    }
+
+
+    .one {
+        left: 8%;
+        animation-duration: 6s;
+        animation-delay: 1s;
+    }
+
+    .two {
+        left: 25%;
+        animation-duration: 7s;
+        animation-delay: 3s;
+    }
+
+    .three {
+        left: 50%;
+        animation-duration: 6.5s;
+        animation-delay: 1.5s;
+    }
+
+    .four {
+        left: 75%;
+        animation-duration: 8s;
+        animation-delay: 4s;
+    }
+
+    .five {
+        left: 90%;
+        animation-duration: 7s;
+        animation-delay: 2s;
+    }
+
+
+    /* =========================
+       الحركات
+    ========================== */
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform:
+                translateY(0)
+                rotate(-3deg);
+        }
+
+        50% {
+            transform:
+                translateY(-13px)
+                rotate(3deg);
+        }
+    }
+
+
+    @keyframes fall {
+
+        0% {
+            transform:
+                translateY(-50px)
+                rotate(0deg);
+        }
+
+        100% {
+            transform:
+                translateY(115vh)
+                rotate(360deg);
+        }
+    }
+
+
+    @keyframes pageAppear {
+
+        from {
+
+            opacity: 0;
+
+            transform:
+                translateY(25px)
+                scale(0.98);
+        }
+
+        to {
+
+            opacity: 1;
+
+            transform:
+                translateY(0)
+                scale(1);
+        }
+    }
+
+
+    /* =========================
+       شاشات الهاتف الصغيرة
+    ========================== */
+
+    @media (max-width: 500px) {
+
+        body {
+
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+
+
+        .container {
+
+            padding:
+                20px 10px;
+        }
+
+
+        .cap {
+
+            margin-bottom: 17px;
+        }
+
+
+        h1 {
+
+            margin-bottom: 10px;
+
+            line-height: 1.45;
+        }
+
+
+        .message {
+
+            margin:
+                18px auto 27px;
+
+            line-height: 1.9;
+        }
+
+
+        .start-btn {
+
+            width: min(100%, 280px);
+
+            padding:
+                15px 25px;
+        }
+    }
+
+
+    /* =========================
+       شاشات الهاتف الصغيرة جدًا
+    ========================== */
+
+    @media (max-width: 360px) {
+
+        .container {
+
+            padding:
+                15px 5px;
+        }
+
+
+        .message {
+
+            font-size: 15px;
+
+            line-height: 1.8;
+        }
+
+
+        .start-btn {
+
+            min-height: 50px;
+
+            font-size: 16px;
+        }
+    }
+
+
+    /* =========================
+       تقليل الحركة لمن يفضل ذلك
+    ========================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+        *,
+        *::before,
+        *::after {
+
+            animation-duration: 0.01ms !important;
+
+            animation-iteration-count: 1 !important;
+
+            scroll-behavior: auto !important;
+        }
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- =========================
+     عناصر الخلفية
+========================== -->
+
+<div class="floating one">❤️</div>
+
+<div class="floating two">🌸</div>
+
+<div class="floating three">💕</div>
+
+<div class="floating four">✨</div>
+
+<div class="floating five">🌷</div>
+
+
+<!-- =========================
+     المحتوى الرئيسي
+========================== -->
+
+<main class="container">
+
+
+    <div class="cap">
+        🎓
+    </div>
+
+
+    <h1>
+
+        إلى أختي الأميرة
+
+        <span class="name">
+            نوران ❤️
+        </span>
+
+    </h1>
+
+
+    <p class="message">
+
+        بعد
+
+        <span class="highlight">
+            12 سنة
+        </span>
+
+        من الدراسة،
+
+        والتعب، والسهر، والأحلام...
+
+        <br>
+
+        وصل اليوم اللي نستنو فيه من زمان 🎓✨
+
+        <br><br>
+
+        اليوم مش مجرد نتيجة...
+
+        <br>
+
+        <span class="highlight">
+            اليوم ثمرة تعب 12 سنة كاملة ❤️
+        </span>
+
+    </p>
+
+
+    <!-- زر الانتقال -->
+
+    <button
+        class="start-btn"
+        onclick="startGift()">
+
+        ✨ ابدئي المفاجأة ✨
+
+    </button>
+
+
+</main>
+
+
+<script>
+
+    function startGift() {
+
+        window.location.href =
+            "result.html";
+
+    }
+
+</script>
+```
+
+</body>
+
+</html>

@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<title>لحظة الحقيقة 🎓❤️</title>
+
+<link rel="icon" href="images/cap.png">
+
+
+<style>
+
+    /* =========================
+       الإعدادات الأساسية
+    ========================== */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+
+    body {
+
+        min-height: 100vh;
+        min-height: 100dvh;
+
+        font-family:
+            Tahoma,
+            Arial,
+            sans-serif;
+
+        background:
+            radial-gradient(
+                circle at top,
+                #fff9fc,
+                transparent 45%
+            ),
+
+            linear-gradient(
+                135deg,
+                #fff0f7,
+                #f3e7ff
+            );
+
+        color: #4a3045;
+
+        text-align: center;
+
+        overflow-x: hidden;
+    }
+
+
+    /* =========================
+       بوابة الصوت
+    ========================== */
+
+    .voice-screen {
+
+        position: fixed;
+
+        inset: 0;
+
+        min-height: 100vh;
+        min-height: 100dvh;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        padding: 25px;
+
+        background:
+            radial-gradient(
+                circle at 50% 20%,
+                #ffffff,
+                transparent 40%
+            ),
+
+            linear-gradient(
+                135deg,
+                #fff0f7,
+                #f3e7ff
+            );
+
+        z-index: 1000;
+
+        transition:
+            opacity 0.8s ease,
+            visibility 0.8s ease;
+    }
+
+
+    .voice-screen.hide {
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        pointer-events: none;
+    }
+
+
+    .voice-box {
+
+        width: 100%;
+
+        max-width: 520px;
+
+        background:
+            rgba(255, 255, 255, 0.78);
+
+        backdrop-filter: blur(10px);
+
+        -webkit-backdrop-filter: blur(10px);
+
+        padding:
+            40px 25px;
+
+        border-radius: 30px;
+
+        box-shadow:
+            0 15px 45px
+            rgba(90, 50, 90, 0.12);
+
+        animation:
+            appear 1s ease;
+    }
+
+
+    .voice-icon {
+
+        font-size:
+            clamp(55px, 16vw, 80px);
+
+        margin-bottom: 20px;
+
+        animation:
+            microphonePulse 1.8s
+            ease-in-out infinite;
+    }
+
+
+    .voice-box h1 {
+
+        font-size:
+            clamp(25px, 7vw, 34px);
+
+        margin-bottom: 15px;
+
+        line-height: 1.5;
+    }
+
+
+    .voice-name {
+
+        color: #c45aa0;
+
+        font-weight: bold;
+    }
+
+
+    .voice-text {
+
+        font-size:
+            clamp(16px, 4.5vw, 19px);
+
+        line-height: 2;
+
+        margin:
+            20px auto 28px;
+
+        color: #60485a;
+    }
+
+
+    .voice-highlight {
+
+        color: #b54d91;
+
+        font-weight: bold;
+    }
+
+
+    /* زر بدء التسجيل */
+
+    .start-voice-btn {
+
+        border: none;
+
+        outline: none;
+
+        background:
+            linear-gradient(
+                135deg,
+                #d96bb1,
+                #a951a4
+            );
+
+        color: white;
+
+        min-width: 210px;
+
+        min-height: 56px;
+
+        padding:
+            15px 30px;
+
+        border-radius: 50px;
+
+        font-size:
+            clamp(16px, 4.5vw, 19px);
+
+        font-family: inherit;
+
+        font-weight: bold;
+
+        cursor: pointer;
+
+        box-shadow:
+            0 10px 25px
+            rgba(169, 81, 164, 0.25);
+
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+
+    .start-voice-btn:hover {
+
+        transform:
+            translateY(-4px)
+            scale(1.02);
+
+        box-shadow:
+            0 15px 30px
+            rgba(169, 81, 164, 0.35);
+    }
+
+
+    .start-voice-btn:active {
+
+        transform: scale(0.96);
+    }
+
+
+    /* =========================
+       الصفحة الأساسية
+    ========================== */
+
+    .main-page {
+
+        width: 100%;
+
+        max-width: 680px;
+
+        margin: auto;
+
+        padding:
+            35px 20px 70px;
+
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+
+        transition:
+            opacity 1s ease,
+            transform 1s ease;
+
+        pointer-events: none;
+    }
+
+
+    .main-page.show {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        pointer-events: auto;
+    }
+
+
+    /* =========================
+       مؤشر الصوت
+    ========================== */
+
+    .audio-control {
+
+        position: fixed;
+
+        top: 18px;
+
+        left: 18px;
+
+        z-index: 50;
+
+        border: none;
+
+        width: 48px;
+
+        height: 48px;
+
+        border-radius: 50%;
+
+        background:
+            rgba(255, 255, 255, 0.9);
+
+        box-shadow:
+            0 6px 18px
+            rgba(0, 0, 0, 0.10);
+
+        font-size: 20px;
+
+        cursor: pointer;
+
+        display: none;
+
+        align-items: center;
+
+        justify-content: center;
+    }
+
+
+    .audio-control.show {
+
+        display: flex;
+    }
+
+
+    /* =========================
+       الصورة الشخصية
+    ========================== */
+
+    .photo-container {
+
+        width:
+            min(220px, 62vw);
+
+        height:
+            min(280px, 78vw);
+
+        margin:
+            0 auto 25px;
+
+        border-radius: 25px;
+
+        overflow: hidden;
+
+        border:
+            5px solid white;
+
+        box-shadow:
+            0 12px 35px
+            rgba(0, 0, 0, 0.15);
+
+        animation:
+            photoAppear 1.2s ease;
+    }
+
+
+    .photo-container img {
+
+        width: 100%;
+
+        height: 100%;
+
+        object-fit: cover;
+
+        display: block;
+    }
+
+
+    /* =========================
+       العناوين
+    ========================== */
+
+    h1 {
+
+        font-size:
+            clamp(25px, 7vw, 32px);
+
+        line-height: 1.5;
+
+        margin-bottom: 15px;
+    }
+
+
+    .subtitle {
+
+        font-size:
+            clamp(16px, 4.5vw, 19px);
+
+        line-height: 1.9;
+
+        margin-bottom: 20px;
+    }
+
+
+    .highlight {
+
+        color: #b54d91;
+
+        font-weight: bold;
+    }
+
+
+    /* =========================
+       العد التنازلي
+    ========================== */
+
+    .countdown {
+
+        min-height: 105px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size:
+            clamp(65px, 18vw, 85px);
+
+        font-weight: bold;
+
+        color: #c45aa0;
+
+        margin:
+            10px 0 15px;
+
+        animation:
+            pulse 1s infinite;
+    }
+
+
+    .ready {
+
+        display: none;
+
+        font-size:
+            clamp(18px, 5vw, 23px);
+
+        font-weight: bold;
+
+        line-height: 1.7;
+
+        margin:
+            15px 0 25px;
+
+        color: #604054;
+
+        animation:
+            appear 0.8s ease;
+    }
+
+
+    /* =========================
+       الأزرار
+    ========================== */
+
+    .result-btn,
+    .message-btn {
+
+        border: none;
+
+        outline: none;
+
+        background:
+            linear-gradient(
+                135deg,
+                #d96bb1,
+                #a951a4
+            );
+
+        color: white;
+
+        padding:
+            15px 30px;
+
+        min-height: 54px;
+
+        min-width: 210px;
+
+        border-radius: 50px;
+
+        font-size:
+            clamp(16px, 4.5vw, 18px);
+
+        font-family: inherit;
+
+        font-weight: bold;
+
+        cursor: pointer;
+
+        box-shadow:
+            0 8px 22px
+            rgba(169, 81, 164, 0.25);
+
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+
+    .result-btn:hover,
+    .message-btn:hover {
+
+        transform:
+            translateY(-4px);
+
+        box-shadow:
+            0 13px 27px
+            rgba(169, 81, 164, 0.32);
+    }
+
+
+    .result-btn:active,
+    .message-btn:active {
+
+        transform: scale(0.96);
+    }
+
+
+    /* =========================
+       قسم النتيجة
+    ========================== */
+
+    .result-section {
+
+        display: none;
+
+        margin-top: 45px;
+
+        animation:
+            resultAppear 1.2s ease;
+    }
+
+
+    .result-title {
+
+        font-size:
+            clamp(20px, 5vw, 24px);
+
+        margin-bottom: 10px;
+    }
+
+
+    /* =========================
+       النسبة
+    ========================== */
+
+    .percentage {
+
+        font-size:
+            clamp(50px, 15vw, 75px);
+
+        font-weight: bold;
+
+        color: #b54d91;
+
+        margin:
+            5px 0 12px;
+
+        line-height: 1.2;
+
+        text-shadow:
+            0 5px 20px
+            rgba(181, 77, 145, 0.15);
+    }
+
+
+    .congratulations {
+
+        font-size:
+            clamp(21px, 6vw, 27px);
+
+        font-weight: bold;
+
+        line-height: 1.6;
+
+        margin-bottom: 20px;
+    }
+
+
+    .result-caption {
+
+        font-size:
+            clamp(16px, 4.5vw, 19px);
+
+        margin:
+            25px 0 12px;
+
+        font-weight: bold;
+    }
+
+
+    /* =========================
+       صورة النتيجة
+    ========================== */
+
+    .result-image-wrapper {
+
+        position: relative;
+
+        width: 100%;
+
+        margin-top: 10px;
+
+        cursor: zoom-in;
+    }
+
+
+    .result-image {
+
+        width: 100%;
+
+        max-width: 550px;
+
+        height: auto;
+
+        display: block;
+
+        margin: auto;
+
+        border-radius: 18px;
+
+        border:
+            5px solid white;
+
+        box-shadow:
+            0 10px 30px
+            rgba(0, 0, 0, 0.15);
+
+        transition:
+            transform 0.3s ease;
+    }
+
+
+    .result-image:hover {
+
+        transform: scale(1.01);
+    }
+
+
+    .zoom-hint {
+
+        font-size: 14px;
+
+        color: #806579;
+
+        margin-top: 10px;
+    }
+
+
+    /* =========================
+       نافذة تكبير النتيجة
+    ========================== */
+
+    .image-modal {
+
+        position: fixed;
+
+        inset: 0;
+
+        background:
+            rgba(30, 15, 30, 0.88);
+
+        display: none;
+
+        justify-content: center;
+
+        align-items: center;
+
+        padding: 20px;
+
+        z-index: 500;
+
+        cursor: zoom-out;
+    }
+
+
+    .image-modal.show {
+
+        display: flex;
+    }
+
+
+    .image-modal img {
+
+        max-width: 95vw;
+
+        max-height: 90vh;
+
+        width: auto;
+
+        height: auto;
+
+        border-radius: 12px;
+
+        box-shadow:
+            0 15px 50px
+            rgba(0, 0, 0, 0.35);
+    }
+
+
+    .close-modal {
+
+        position: fixed;
+
+        top: 18px;
+
+        right: 18px;
+
+        width: 45px;
+
+        height: 45px;
+
+        border: none;
+
+        border-radius: 50%;
+
+        background:
+            rgba(255, 255, 255, 0.95);
+
+        color: #4a3045;
+
+        font-size: 22px;
+
+        cursor: pointer;
+    }
+
+
+    /* =========================
+       زر الرسالة
+    ========================== */
+
+    .message-btn {
+
+        margin-top: 30px;
+    }
+
+
+    /* =========================
+       Confetti
+    ========================== */
+
+    .confetti {
+
+        position: fixed;
+
+        width: 10px;
+
+        height: 16px;
+
+        top: -30px;
+
+        z-index: 300;
+
+        pointer-events: none;
+
+        animation:
+            confettiFall linear forwards;
+    }
+
+
+    @keyframes confettiFall {
+
+        0% {
+
+            transform:
+                translateY(-30px)
+                rotate(0deg);
+
+            opacity: 1;
+        }
+
+        100% {
+
+            transform:
+                translateY(110vh)
+                rotate(720deg);
+
+            opacity: 0;
+        }
+    }
+
+
+    /* =========================
+       الحركات
+    ========================== */
+
+    @keyframes pulse {
+
+        0%,
+        100% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.08);
+        }
+    }
+
+
+    @keyframes appear {
+
+        from {
+
+            opacity: 0;
+
+            transform:
+                translateY(25px);
+        }
+
+        to {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+    }
+
+
+    @keyframes resultAppear {
+
+        from {
+
+            opacity: 0;
+
+            transform:
+                translateY(35px)
+                scale(0.97);
+        }
+
+        to {
+
+            opacity: 1;
+
+            transform:
+                translateY(0)
+                scale(1);
+        }
+    }
+
+
+    @keyframes photoAppear {
+
+        from {
+
+            opacity: 0;
+
+            transform:
+                scale(0.9)
+                translateY(20px);
+        }
+
+        to {
+
+            opacity: 1;
+
+            transform:
+                scale(1)
+                translateY(0);
+        }
+    }
+
+
+    @keyframes microphonePulse {
+
+        0%,
+        100% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.08);
+        }
+    }
+
+
+    /* =========================
+       الهاتف
+    ========================== */
+
+    @media (max-width: 500px) {
+
+        .voice-box {
+
+            padding:
+                32px 20px;
+
+            border-radius: 25px;
+        }
+
+
+        .main-page {
+
+            padding:
+                30px 14px 60px;
+        }
+
+
+        .photo-container {
+
+            border-width: 4px;
+
+            border-radius: 22px;
+        }
+
+
+        .countdown {
+
+            min-height: 90px;
+        }
+
+
+        .result-image {
+
+            border-width: 4px;
+
+            border-radius: 15px;
+        }
+
+
+        .audio-control {
+
+            width: 44px;
+
+            height: 44px;
+
+            top: 12px;
+
+            left: 12px;
+        }
+    }
+
+
+    /* شاشات صغيرة جدًا */
+
+    @media (max-width: 360px) {
+
+        .voice-box {
+
+            padding:
+                27px 16px;
+        }
+
+
+        .voice-text {
+
+            font-size: 15px;
+
+            line-height: 1.85;
+        }
+
+
+        .main-page {
+
+            padding:
+                25px 10px 50px;
+        }
+
+
+        .subtitle {
+
+            font-size: 15px;
+
+            line-height: 1.8;
+        }
+    }
+
+
+    /* تقليل الحركة */
+
+    @media (prefers-reduced-motion: reduce) {
+
+        *,
+        *::before,
+        *::after {
+
+            animation-duration:
+                0.01ms !important;
+
+            animation-iteration-count:
+                1 !important;
+        }
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- =================================================
+     بوابة الصوت
+================================================== -->
+
+<section
+    class="voice-screen"
+    id="voiceScreen"
+>
+
+    <div class="voice-box">
+
+
+        <div class="voice-icon">
+            🎙️
+        </div>
+
+
+        <h1>
+
+            نوران... قبل ما نبدأ ❤️
+
+        </h1>
+
+
+        <p class="voice-text">
+
+            عندي كلمة خاصة نبيك تسمعيها
+            <br>
+
+            قبل ما تشوفي النتيجة...
+
+            <br><br>
+
+            خذي لحظتك...
+
+            <span class="voice-highlight">
+                واضغطي لما تكوني جاهزة 🎓
+            </span>
+
+        </p>
+
+
+        <button
+            class="start-voice-btn"
+            id="startVoiceBtn"
+            onclick="startExperience()"
+        >
+
+            🎙️ أنا جاهزة ❤️
+
+        </button>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================================
+     زر التحكم بالصوت
+================================================== -->
+
+<button
+    class="audio-control"
+    id="audioControl"
+    onclick="toggleAudio()"
+    aria-label="التحكم بالصوت"
+>
+
+    🔊
+
+</button>
+
+
+
+<!-- =================================================
+     الصفحة الأساسية
+================================================== -->
+
+<main
+    class="main-page"
+    id="mainPage"
+>
+
+
+    <!-- صورة نوران -->
+
+    <div class="photo-container">
+
+        <img
+            src="images/graduation.jpg"
+            alt="صورة نوران في التخرج"
+        >
+
+    </div>
+
+
+
+    <!-- العنوان -->
+
+    <h1>
+
+        لحظة الحقيقة
+        🎓❤️
+
+    </h1>
+
+
+    <p class="subtitle">
+
+        <span class="highlight">
+            12 سنة
+        </span>
+
+        من التعب...
+
+        <br>
+
+        <span class="highlight">
+            12 سنة
+        </span>
+
+        من الأحلام...
+
+        <br>
+
+        واليوم حان وقت معرفة النتيجة ✨
+
+    </p>
+
+
+
+    <!-- العد التنازلي -->
+
+    <div
+        class="countdown"
+        id="countdown"
+    >
+
+        3
+
+    </div>
+
+
+
+    <!-- رسالة الاستعداد -->
+
+    <div
+        class="ready"
+        id="ready"
+    >
+
+        هل أنتِ مستعدة لمعرفة النتيجة؟
+        👀❤️
+
+    </div>
+
+
+
+    <!-- زر إظهار النتيجة -->
+
+    <button
+        class="result-btn"
+        id="resultBtn"
+        onclick="showResult()"
+    >
+
+        🎁 أظهري النتيجة
+
+    </button>
+
+
+
+    <!-- =================================================
+         قسم النتيجة
+    ================================================== -->
+
+    <section
+        class="result-section"
+        id="resultSection"
+    >
+
+
+        <div class="result-title">
+
+            نوران... نتيجتك هي 🎓
+
+        </div>
+
+
+        <div
+            class="percentage"
+            id="percentage"
+        >
+
+            0%
+
+        </div>
+
+
+        <div class="congratulations">
+
+            🎉 مبرووووك النجاح 🎉
+
+        </div>
+
+
+        <p class="result-caption">
+
+            وهذه ثمرة تعبك
+            ❤️
+
+        </p>
+
+
+
+        <!-- صورة النتيجة -->
+
+        <div
+            class="result-image-wrapper"
+            onclick="openImage()"
+        >
+
+            <img
+                src="images/result.jpg"
+                alt="النتيجة الرسمية لنوران"
+                class="result-image"
+                id="resultImage"
+            >
+
+        </div>
+
+
+        <p class="zoom-hint">
+
+            🔍 اضغطي على الصورة لتكبيرها
+
+        </p>
+
+
+
+        <!-- زر الرسالة -->
+
+        <button
+            class="message-btn"
+            onclick="goToMessage()"
+        >
+
+            💌 رسالة من أختك
+
+        </button>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =================================================
+     نافذة تكبير الصورة
+================================================== -->
+
+<div
+    class="image-modal"
+    id="imageModal"
+    onclick="closeImage()"
+>
+
+    <button
+        class="close-modal"
+        onclick="closeImage()"
+    >
+
+        ✕
+
+    </button>
+
+
+    <img
+        src="images/result.jpg"
+        alt="النتيجة الرسمية مكبرة"
+    >
+
+</div>
+
+
+
+<!-- =================================================
+     التسجيل الصوتي
+================================================== -->
+
+<audio
+    id="myVoice"
+    src="audio/voice.mp3"
+    preload="auto"
+>
+</audio>
+
+
+
+<script>
+
+
+    /* =================================================
+       المتغيرات
+    ================================================== */
+
+    const voiceScreen =
+        document.getElementById("voiceScreen");
+
+
+    const mainPage =
+        document.getElementById("mainPage");
+
+
+    const myVoice =
+        document.getElementById("myVoice");
+
+
+    const audioControl =
+        document.getElementById("audioControl");
+
+
+    const countdown =
+        document.getElementById("countdown");
+
+
+    const ready =
+        document.getElementById("ready");
+
+
+    const resultBtn =
+        document.getElementById("resultBtn");
+
+
+    const resultSection =
+        document.getElementById("resultSection");
+
+
+    const percentage =
+        document.getElementById("percentage");
+
+
+    /* =================================================
+       بدء التجربة
+    ================================================== */
+
+    function startExperience() {
+
+
+        /*
+         يبدأ الصوت بعد ضغطة نوران،
+         لذلك المتصفح يسمح بتشغيله.
+        */
+
+        myVoice.volume = 1;
+
+
+        myVoice.play()
+            .then(function () {
+
+                audioControl.classList.add("show");
+
+            })
+            .catch(function (error) {
+
+                console.log(
+                    "تعذر تشغيل التسجيل:",
+                    error
+                );
+
+            });
+
+
+        /*
+         إخفاء بوابة الصوت
+        */
+
+        voiceScreen.classList.add("hide");
+
+
+        /*
+         إظهار الصفحة الأساسية
+        */
+
+        setTimeout(function () {
+
+            mainPage.classList.add("show");
+
+            startCountdown();
+
+        }, 500);
+
+    }
+
+
+    /* =================================================
+       التحكم بالصوت
+    ================================================== */
+
+    function toggleAudio() {
+
+
+        if (myVoice.paused) {
+
+            myVoice.play();
+
+            audioControl.textContent = "🔊";
+
+        }
+
+        else {
+
+            myVoice.pause();
+
+            audioControl.textContent = "🔇";
+
+        }
+
+    }
+
+
+    /* =================================================
+       العد التنازلي
+    ================================================== */
+
+    function startCountdown() {
+
+
+        let count = 3;
+
+
+        countdown.textContent = count;
+
+
+        const timer =
+            setInterval(function () {
+
+
+                count--;
+
+
+                if (count > 0) {
+
+                    countdown.textContent =
+                        count;
+
+                }
+
+                else {
+
+                    clearInterval(timer);
+
+
+                    countdown.textContent =
+                        "🎉";
+
+
+                    ready.style.display =
+                        "block";
+
+
+                    resultBtn.style.display =
+                        "inline-block";
+
+                }
+
+
+            }, 1000);
+
+    }
+
+
+    /* =================================================
+       إظهار النتيجة
+    ================================================== */
+
+    function showResult() {
+
+
+        /*
+         إخفاء زر النتيجة
+        */
+
+        resultBtn.style.display =
+            "none";
+
+
+        /*
+         إظهار قسم النتيجة
+        */
+
+        resultSection.style.display =
+            "block";
+
+
+        /*
+         تشغيل الاحتفال
+        */
+
+        createConfetti();
+
+
+        /*
+         تحريك النسبة
+        */
+
+        animatePercentage(
+            92.35,
+            1800
+        );
+
+
+        /*
+         الانتقال تلقائيًا للنتيجة
+        */
+
+        setTimeout(function () {
+
+            resultSection.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "start"
+
+            });
+
+        }, 300);
+
+    }
+
+
+    /* =================================================
+       تحريك النسبة
+    ================================================== */
+
+    function animatePercentage(
+        target,
+        duration
+    ) {
+
+
+        let start = 0;
+
+        const startTime =
+            performance.now();
+
+
+        function update(currentTime) {
+
+
+            const elapsed =
+                currentTime - startTime;
+
+
+            const progress =
+                Math.min(
+                    elapsed / duration,
+                    1
+                );
+
+
+            /*
+             حركة أكثر نعومة
+            */
+
+            const ease =
+                1 - Math.pow(
+                    1 - progress,
+                    3
+                );
+
+
+            const current =
+                start +
+                (target - start) * ease;
+
+
+            percentage.textContent =
+                current.toFixed(2) + "%";
+
+
+            if (progress < 1) {
+
+                requestAnimationFrame(update);
+
+            }
+
+            else {
+
+                percentage.textContent =
+                    target.toFixed(2) + "%";
+
+            }
+
+        }
+
+
+        requestAnimationFrame(update);
+
+    }
+
+
+    /* =================================================
+       Confetti
+    ================================================== */
+
+    function createConfetti() {
+
+
+        const symbols = [
+            "🎉",
+            "✨",
+            "💕",
+            "🌸",
+            "🎓",
+            "❤️"
+        ];
+
+
+        for (
+            let i = 0;
+            i < 70;
+            i++
+        ) {
+
+
+            const piece =
+                document.createElement(
+                    "div"
+                );
+
+
+            piece.className =
+                "confetti";
+
+
+            piece.textContent =
+                symbols[
+                    Math.floor(
+                        Math.random() *
+                        symbols.length
+                    )
+                ];
+
+
+            piece.style.left =
+                Math.random() * 100 + "vw";
+
+
+            piece.style.fontSize =
+                (12 + Math.random() * 14) +
+                "px";
+
+
+            piece.style.animationDuration =
+                (2.5 + Math.random() * 2.5) +
+                "s";
+
+
+            piece.style.animationDelay =
+                Math.random() * 0.8 +
+                "s";
+
+
+            document.body.appendChild(
+                piece
+            );
+
+
+            setTimeout(function () {
+
+                piece.remove();
+
+            }, 6000);
+
+        }
+
+    }
+
+
+    /* =================================================
+       تكبير صورة النتيجة
+    ================================================== */
+
+    function openImage() {
+
+
+        document
+            .getElementById("imageModal")
+            .classList.add("show");
+
+    }
+
+
+    function closeImage() {
+
+
+        document
+            .getElementById("imageModal")
+            .classList.remove("show");
+
+    }
+
+
+    /* =================================================
+       الانتقال للرسالة
+    ================================================== */
+
+    function goToMessage() {
+
+
+        window.location.href =
+            "message.html";
+
+    }
+
+
+    /* =================================================
+       إغلاق الصورة بزر Escape
+    ================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeImage();
+
+            }
+
+        }
+    );
+
+</script>
+```
+
+</body>
+
+</html>
