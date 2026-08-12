@@ -1095,7 +1095,7 @@
         id="ready"
     >
 
-        هل أنتِ مستعدة لمعرفة النتيجة؟
+        هيا بسم الله
         👀❤️
 
     </div>
@@ -1108,18 +1108,6 @@
         id="countdown">
         3
     </div>
-
-    <!-- زر إظهار النتيجة -->
-
-    <button
-        class="result-btn"
-        id="resultBtn"
-        onclick="showResult()"
-    >
-
-        🎁 أظهري النتيجة
-
-    </button>
 
 
 
@@ -1148,7 +1136,7 @@
 
         <div class="congratulations">
 
-            🎉 مبرووووك النجاح بتقدير امتياز 🎓🎉
+            🎉 ناني مبرووووك النجاح 🎓🎉
 
         </div>
 
@@ -1187,7 +1175,7 @@
             onclick="goToMessage()"
         >
 
-            💌 رسالة مباركةالنجاح
+            💌 هدية 
 
         </button>
 
@@ -1205,54 +1193,27 @@
 
 <audio
     id="myVoice"
-    src="audio/voice.mp3"
+    src="voice.mp3"
     preload="auto"
 >
 </audio>
 
 
-
 <script>
 
-
     /* =================================================
-       المتغيرات
+       المتغيرات الرئيسية
     ================================================== */
 
-    const voiceScreen =
-        document.getElementById("voiceScreen");
+    const voiceScreen = document.getElementById("voiceScreen");
+    const mainPage = document.getElementById("mainPage");
+    const myVoice = document.getElementById("myVoice");
+    const audioControl = document.getElementById("audioControl");
 
-
-    const mainPage =
-        document.getElementById("mainPage");
-
-
-    const myVoice =
-        document.getElementById("myVoice");
-
-
-    const audioControl =
-        document.getElementById("audioControl");
-
-
-    const countdown =
-        document.getElementById("countdown");
-
-
-    const ready =
-        document.getElementById("ready");
-
-
-    const resultBtn =
-        document.getElementById("resultBtn");
-
-
-    const resultSection =
-        document.getElementById("resultSection");
-
-
-    const percentage =
-        document.getElementById("percentage");
+    const countdown = document.getElementById("countdown");
+    const ready = document.getElementById("ready");
+    const resultSection = document.getElementById("resultSection");
+    const percentage = document.getElementById("percentage");
 
 
     /* =================================================
@@ -1261,18 +1222,13 @@
 
     function startExperience() {
 
-
-        /*
-         يبدأ الصوت بعد ضغطة نوران،
-         لذلك المتصفح يسمح بتشغيله.
-        */
-
+        // تشغيل التسجيل الصوتي
         myVoice.volume = 1;
-
 
         myVoice.play()
             .then(function () {
 
+                // إظهار زر التحكم بالصوت
                 audioControl.classList.add("show");
 
             })
@@ -1286,21 +1242,16 @@
             });
 
 
-        /*
-         إخفاء بوابة الصوت
-        */
-
+        // إخفاء شاشة البداية
         voiceScreen.classList.add("hide");
 
 
-        /*
-         إظهار الصفحة الأساسية
-        */
-
+        // إظهار الصفحة الرئيسية
         setTimeout(function () {
 
             mainPage.classList.add("show");
 
+            // بدء العد التنازلي
             startCountdown();
 
         }, 500);
@@ -1314,16 +1265,13 @@
 
     function toggleAudio() {
 
-
         if (myVoice.paused) {
 
             myVoice.play();
 
             audioControl.textContent = "🔊";
 
-        }
-
-        else {
+        } else {
 
             myVoice.pause();
 
@@ -1336,104 +1284,77 @@
 
     /* =================================================
        العد التنازلي
+       وبعده تظهر النتيجة تلقائيًا
     ================================================== */
 
     function startCountdown() {
 
-
         let count = 3;
 
-
+        // التأكد أن البداية تظهر 3
         countdown.textContent = count;
 
 
-        const timer =
-            setInterval(function () {
+        const timer = setInterval(function () {
+
+            count--;
 
 
-                count--;
+            // 2 ثم 1
+            if (count > 0) {
+
+                countdown.textContent = count;
+
+            }
 
 
-                if (count > 0) {
+            // انتهاء العد
+            else {
 
-                    countdown.textContent =
-                        count;
-
-                }
-
-                else {
-
-                    clearInterval(timer);
+                clearInterval(timer);
 
 
-                    countdown.textContent =
-                        "🎉";
+                // إظهار علامة الاحتفال
+                countdown.textContent = "🎉";
 
 
-                    ready.style.display =
-                        "block";
+                // إظهار رسالة الاستعداد
+                ready.style.display = "block";
 
 
-                    resultBtn.style.display =
-                        "inline-block";
+                // انتظار ثانية ثم إظهار النتيجة
+                setTimeout(function () {
 
-                }
+                    showResultAutomatically();
 
+                }, 1000);
 
-            }, 1000);
+            }
+
+        }, 1000);
 
     }
 
 
     /* =================================================
-       إظهار النتيجة
+       إظهار النتيجة تلقائيًا
     ================================================== */
 
-    function showResult() {
+    function showResultAutomatically() {
 
+        // إظهار قسم النتيجة
+        resultSection.style.display = "block";
 
-        /*
-         إخفاء زر النتيجة
-        */
-
-        resultBtn.style.display =
-            "none";
-
-
-        /*
-         إظهار قسم النتيجة
-        */
-
-        resultSection.style.display =
-            "block";
-
-
-        /*
-         تشغيل الاحتفال
-        */
-
+        // تشغيل الاحتفال
         createConfetti();
 
-
-        /*
-         تحريك النسبة
-         
-         \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-         \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-         \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-         \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-        */
-
+        // تحريك النسبة
         animatePercentage(
             86.75,
             1800
         );
 
-
-        /*
-         الانتقال تلقائيًا للنتيجة
-        */
-
+        // الانتقال بسلاسة إلى النتيجة
         setTimeout(function () {
 
             resultSection.scrollIntoView({
@@ -1458,7 +1379,6 @@
         duration
     ) {
 
-
         let start = 0;
 
         const startTime =
@@ -1466,7 +1386,6 @@
 
 
         function update(currentTime) {
-
 
             const elapsed =
                 currentTime - startTime;
@@ -1479,10 +1398,7 @@
                 );
 
 
-            /*
-             حركة أكثر نعومة
-            */
-
+            // حركة ناعمة
             const ease =
                 1 - Math.pow(
                     1 - progress,
@@ -1503,10 +1419,9 @@
 
                 requestAnimationFrame(update);
 
-            }
+            } else {
 
-            else {
-
+                // تثبيت النتيجة النهائية
                 percentage.textContent =
                     target.toFixed(2) + "%";
 
@@ -1521,13 +1436,13 @@
 
 
     /* =================================================
-       Confetti
+       Confetti 🎉
     ================================================== */
 
     function createConfetti() {
 
-
         const symbols = [
+
             "🎓",
             "🎉",
             "🌸",
@@ -1538,6 +1453,7 @@
             "🌸",
             "🎓",
             "❤️"
+
         ];
 
 
@@ -1546,7 +1462,6 @@
             i < 70;
             i++
         ) {
-
 
             const piece =
                 document.createElement(
@@ -1591,6 +1506,7 @@
             );
 
 
+            // حذف العنصر بعد انتهاء الحركة
             setTimeout(function () {
 
                 piece.remove();
@@ -1608,7 +1524,6 @@
 
     function openImage() {
 
-
         document
             .getElementById("imageModal")
             .classList.add("show");
@@ -1618,7 +1533,6 @@
 
     function closeImage() {
 
-
         document
             .getElementById("imageModal")
             .classList.remove("show");
@@ -1627,20 +1541,17 @@
 
 
     /* =================================================
-       الانتقال للرسالة
+       الانتقال للرسالة الأخيرة
     ================================================== */
 
     function goToMessage() {
-
 
         window.location.href =
             "message.html";
 
     }
 
-
 </script>
-
 </body>
 
 </html>
